@@ -8,9 +8,6 @@ env:
 
 os: linux
 
-deploy:
-  skip_cleanup: true
-
 before_install:
   - go get -t -v ./...
 
@@ -21,9 +18,5 @@ install:
   - go mod vendor
 
 script:
-  - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then bash ./travis/run_on_pull_requests.sh; fi'
-  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then bash ./travis/run_on_non_pull_requests.sh; fi'
-  - 'bash ./travis/test_coverage.sh;'
-
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
+  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then bash ./travis/run_on_pull_requests.sh; fi'
+  - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then bash ./travis/run_on_non_pull_requests.sh; fi'
