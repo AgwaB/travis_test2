@@ -6,7 +6,7 @@ go:
 env:
   - GO111MODULE=on
 
-  OS: linux
+os: linux
 
 before_install:
   - go get -t -v ./...
