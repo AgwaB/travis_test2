@@ -6,7 +6,7 @@ go:
 env:
   - GO111MODULE=on
 
-  OS: linux
+os: linux
 
 deploy:
   skip_cleanup: true
